@@ -12,7 +12,7 @@ const authMiddleware = (req, res, next) => {
   const token = authHeader.replace("Bearer ", "");
 
   try {
-    const decoded = jwt.verify(token, "your_jwt_secret"); // Use the same secret key used when signing the JWT
+    const decoded = jwt.verify(token, process.env.JWT_SECRET); // Use the same secret key used when signing the JWT
     req.user = decoded; // Attach the decoded token to the request
     next();
   } catch (err) {
