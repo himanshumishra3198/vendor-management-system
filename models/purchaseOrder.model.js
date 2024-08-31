@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Vendor = require("./vendor.model"); // Adjust path as necessary
+const Vendor = require("./vendor.model");
 
 const PurchaseOrderSchema = new mongoose.Schema({
   poNumber: {
