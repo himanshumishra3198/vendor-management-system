@@ -58,7 +58,7 @@ Before you begin, ensure you have met the following requirements:
   PORT=3000
   MONGO_URI=mongodb://localhost:27017/vendorManagementDB
   JWT_SECRET=your_jwt_secret
-
+  ```
 PORT: The port number on which your server will run.
 MONGO_URI: Your MongoDB connection string.
 JWT_SECRET: A secret key for signing JWT tokens. Replace your_jwt_secret with a secure, random string.
@@ -68,3 +68,13 @@ JWT_SECRET: A secret key for signing JWT tokens. Replace your_jwt_secret with a 
   For Linux Users:
   ```bash
   sudo systemctl start mongod
+  ```
+  For Windows Users:
+
+  Open the Command Prompt or PowerShell as an administrator.
+
+  Start MongoDB by running:
+  ```bash
+  net start MongoDB
+  ```
+
