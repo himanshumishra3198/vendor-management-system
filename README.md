@@ -147,7 +147,7 @@ Before you begin, ensure you have met the following requirements:
 ## Purchase Order Management
 
 1. **Create a Purchase Order**
-    Endpoint: POST /purchase-orders
+    Endpoint: `POST /purchase-orders`
     Headers: Authorization: Bearer <token>
     Request Body:
     ```bash
