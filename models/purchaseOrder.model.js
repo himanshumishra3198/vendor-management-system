@@ -68,6 +68,7 @@ async function updateVendorMetrics(vendorId) {
   const qualityRatings = completedPOs
     .map((po) => po.qualityRating)
     .filter((rating) => rating !== null);
+
   const qualityRatingAvg =
     qualityRatings.length > 0
       ? qualityRatings.reduce((acc, rating) => acc + rating, 0) /
