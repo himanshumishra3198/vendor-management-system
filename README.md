@@ -52,29 +52,147 @@ Before you begin, ensure you have met the following requirements:
    npm install
 3. **Configure Environment Variables**
 
-  Create a .env file in the root directory and add the following:
+   Create a .env file in the root directory and add the following:
 
-  ```bash
-  PORT=3000
-  MONGO_URI=mongodb://localhost:27017/vendorManagementDB
-  JWT_SECRET=your_jwt_secret
-  ```
-PORT: The port number on which your server will run.
-MONGO_URI: Your MongoDB connection string.
-JWT_SECRET: A secret key for signing JWT tokens. Replace your_jwt_secret with a secure, random string.
+   ```bash
+   PORT=3000
+   MONGO_URI=mongodb://localhost:27017/vendorManagementDB
+   JWT_SECRET=your_jwt_secret
+   ```
+   PORT: The port number on which your server will run.
+   MONGO_URI: Your MongoDB connection string.
+   JWT_SECRET: A secret key for signing JWT tokens. Replace your_jwt_secret with a secure, random string.
 
 
 4. **Configure Environment Variables**
-  For Linux Users:
-  ```bash
-  sudo systemctl start mongod
-  ```
-  For Windows Users:
+   For Linux Users:
+   ```bash
+   sudo systemctl start mongod
+   ```
+   For Windows Users:
 
-  Open the Command Prompt or PowerShell as an administrator.
+   Open the Command Prompt or PowerShell as an administrator.
 
-  Start MongoDB by running:
-  ```bash
-  net start MongoDB
-  ```
+   Start MongoDB by running:
+   ```bash
+   net start MongoDB
+   ```
+5. **Running the Application**
+   To start the server, use:
+   ```bash
+   npm start
+   ```
+
+## API Endpoints
+1. **Authentication**
+   Register a New User
+   Endpoint: `POST /auth/register`
+   Description: Registers a new user.
+   Request Body:
+   ```bash
+      {
+       "username": "user",
+       "password": "password"
+      }
+   ```
+   Response: Returns a success message with user details.
+
+2. **Login a User**
+   Endpoint: `POST /auth/login`
+   Description: Logs in a user and returns a JWT token.
+   Request Body:
+   ```bash
+      {       
+       "username": "user",
+       "password": "password"
+      }
+   ```
+   Response: Returns a JWT token.
+
+## Vendor Management
+1. **Create a Vendor**
+   Endpoint: `POST /vendors`
+   Headers: Authorization: Bearer <token>
+   Request Body:
+   ```bash
+     {
+    "name": "Vendor Name",
+    "contactDetails": "contact@example.com",
+    "address": "123 Vendor Street",
+    "vendorCode": "VENDOR001"
+    }
+   ```
+   Response: Returns the created vendor details.
+   
+3. **Get All Vendors**
+   Endpoint: GET /vendors
+   Headers: Authorization: Bearer <token>
+   Response: Returns a list of all vendors.
+
+4. **Get Vendor by ID**
+   Endpoint: GET /vendors/:vendorId
+   Headers: Authorization: Bearer <token>
+   Response: Returns the vendor details.
+
+4. **Update Vendor**
+    Endpoint: PUT /vendors/:vendorId
+    Headers: Authorization: Bearer <token>
+    Request Body: Fields to be updated.
+    Response: Returns the updated vendor details.
+
+5. **Delete Vendor**
+    Endpoint: DELETE /vendors/:vendorId
+    Headers: Authorization: Bearer <token>
+    Response: Returns a success message.
+
+## Purchase Order Management
+
+1. **Create a Purchase Order**
+    Endpoint: POST /purchase-orders
+    Headers: Authorization: Bearer <token>
+    Request Body:
+    ```bash
+    {
+      "poNumber": "PO12345",
+      "vendor": "vendorId",
+      "orderDate": "2024-08-30",
+      "items": [
+        {
+          "itemName": "Item1",
+          "quantity": 10
+        }
+      ],
+      "quantity": 10,
+      "status": "pending"
+    }
+    ```
+    Response: Returns the created purchase order details.
+
+3. **Get All Purchase Orders**
+    Endpoint: GET /purchase-orders
+    Headers: Authorization: Bearer <token>
+    Response: Returns a list of all purchase orders.
+
+4. **Get Purchase Order by ID**
+    Endpoint: GET /purchase-orders/:poId
+    Headers: Authorization: Bearer <token>
+    Response: Returns the purchase order details.
+
+5. **Update Purchase Order**
+    Endpoint: PUT /purchase-orders/:poId
+    Headers: Authorization: Bearer <token>
+    Request Body: Fields to be updated.
+    Response: Returns the updated purchase order details.
+   
+6. **Delete Purchase Order**
+    Endpoint: DELETE /purchase-orders/:poId
+    Headers: Authorization: Bearer <token>
+    Response: Returns a success message.
+
+## Testing the API
+You can test the API endpoints using Postman or any other API testing tool.
+
+1. **Authentication:** Register a new user or log in to obtain a JWT token.
+2. **Set Authorization Header:** Use the JWT token in the Authorization header as follows: Bearer <your_token>.
+3. **Call Endpoints:** Make API calls to the desired endpoints with the appropriate method, headers, and body.
 
