@@ -27,7 +27,6 @@ The Vendor Management System is a Node.js-based backend application that provide
   - [Vendor Management](#vendor-management)
   - [Purchase Order Management](#purchase-order-management)
 - [Testing the API](#testing-the-api)
-- [License](#license)
 
 ## Prerequisites
 
